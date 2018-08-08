@@ -70,7 +70,7 @@ export default {
 }
 .top{
     padding-top: 40px;
-   
+    padding-bottom: 50px;
 }
  .el-header {
     color: #333;
