@@ -1,0 +1,42 @@
+<template>
+   <div>
+       <h3>新闻标题</h3>
+       <p>
+           <span>发表时间：{{time}}</span>
+           <span>点击：0次</span>
+       </p>
+       <hr>
+       <div class="content">
+           我是第{{id}}新闻
+       </div>
+   </div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            id:this.$route.params.id,
+            time:this.$route.params.time
+        }
+    },
+    methods:{
+
+    },
+    created(){
+        // 注意 $router和route的区别
+        console.log(this.$route.params.id)
+    }
+}
+</script>
+<style lang="less" scoped>
+    h3{
+        font-weight: bold;
+    }
+    p{  
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+

@@ -4,15 +4,16 @@ import member from "../components/member.vue"
 import search from "../components/search.vue"
 import shop from "../components/shopcar.vue"
 import newList from "../components/newList.vue"
-// import "../lib/mui/css/mui.css"
+import newInfo from "../components/newsInfo.vue"
 const router=new VueRouter({
     routes:[
-        {path:'/',redirect:'/home'},
+        {path:'/',redirect:'/home',},
         {path:'/home',component:home},
         {path:"/member",component:member},
         {path:"/search",component:search},
         {path:'/shopcar',component:shop},
-        {path:'/home/newlist',component:newList}
+        {path:'/home/newlist',component:newList},
+        {path:'/home/newInfo/:id',component:newInfo,name:'newInfo'} //路由传参
     ],
     linkActiveClass:"mui-active" //设置激活时的路由样式
 })

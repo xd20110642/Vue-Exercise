@@ -3,7 +3,7 @@
         <!-- <h1>新闻组件</h1> -->
         	<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for="(item,index) of newsList" :key="index">
-					<a :href="item.link">
+					<router-link :to="{name:'newInfo',params:{id:index,time:item.ptime}}">
 						<img class="mui-media-object mui-pull-left" :src="item.picInfo[0].url">
 						<div class="mui-media-body">
 							<h1>{{item.title}}</h1>
@@ -12,7 +12,7 @@
                                 <span>点击次数</span>
                             </p>
 						</div>
-					</a>
+					</router-link>
 				</li>
 				<li class="mui-table-view-cell mui-media">
 					<a href="javascript:;">
