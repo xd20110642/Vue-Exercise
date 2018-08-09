@@ -9,9 +9,19 @@
        <div class="content">
            我是第{{id}}新闻
        </div>
+       <br>
+        <!-- 评论组件  这里需要父组件向子组件传递值 -->
+        <comment
+        :id="id"
+        ></comment>
+        
+        
+
+
    </div>
 </template>
 <script>
+import comment from './comment.vue'
 export default {
     data(){
         return{
@@ -25,6 +35,9 @@ export default {
     created(){
         // 注意 $router和route的区别
         console.log(this.$route.params.id)
+    },
+    components:{
+        comment
     }
 }
 </script>
