@@ -6,6 +6,7 @@ import shop from "../components/shopcar.vue"
 import newList from "../components/newList.vue"
 import newInfo from "../components/newsInfo.vue"
 import photolist from "../components/photoList.vue"
+import photoloading from "../components/photoloading.vue"
 const router=new VueRouter({
     routes:[
         {path:'/',redirect:'/home',},
@@ -15,7 +16,11 @@ const router=new VueRouter({
         {path:'/shopcar',component:shop},
         {path:'/home/newlist',component:newList},
         {path:'/home/newInfo/:id',component:newInfo,name:'newInfo'}, //路由传参
-        {path:'/home/photolist',component:photolist}
+        {path:'/home/photolist',component:photolist,
+        children:[
+            {path:'photoloading/:id',component:photoloading},
+        ]
+        },
     ],
     linkActiveClass:"mui-active" //设置激活时的路由样式
 })

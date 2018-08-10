@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         getList(){
-            this.$http.get(url[0]).then((result) => {
+            this.$http.get(url[0]+'1').then((result) => {
                 console.log(result.data.data)
                 let arr=result.data.data;
                 for(let i=0;i<4;i++){
