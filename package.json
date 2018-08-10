@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot --open --contentBase: src --host  10.0.2.226 --profile",
+    "dev": "webpack-dev-server --hot --open --contentBase: src --host  192.168.101.7 --profile",
     "build": "webpack -p"
   },
   "author": "",

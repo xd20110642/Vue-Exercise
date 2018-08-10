@@ -33,11 +33,14 @@ export default {
 		}
 	},
     mounted(){
-		mui('.mui-scroll-wrapper').scroll({
-		deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		this.$nextTick(() => {
+			mui('.mui-scroll-wrapper').scroll({
+		deceleration: 0.0006, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 		scrollY: true,
 		indicators: false,
 		});
+		})
+		
 	},
 	methods:{
 		SetNum(index){			
@@ -48,12 +51,6 @@ export default {
 	components:{
         photoloading,
 	},
-	watch:{
-		num(){
-			console.log("监听属性被触发了")
-			return this.num;
-		}
-	}
 }
 </script>
 <style lang="less" scoped>
