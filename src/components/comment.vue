@@ -64,13 +64,19 @@ export default {
             if(a == ''){
                  this.$message({
                  message: '内容不能为空',
-                 type: 'success',
+                 type: 'error',
                  duration:1000,
                  showClose:true
                 });
             }else{
                 let mess={content:a,user:{username:'我是新加的'},ctime:new Date()};
                 this.list.push(mess);
+                 this.$message({
+                 message: '发表成功',
+                 type: 'success',
+                 duration:1000,
+                 showClose:true
+                });
             }
             console.log("添加数组成功")
         }

@@ -12,7 +12,8 @@ Vue.use(ElementUI)
 Vue.use(MintUI) //全局实例化后 不需要再次单独声明
 Vue.use(VueRouter) //全局实例化
 Vue.use(VueResource)//全局实例化
-
+// 全局设置post 提交表单数据格式
+Vue.http.options.emulateJSON=true;
 
 
 
