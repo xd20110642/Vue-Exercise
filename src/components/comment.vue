@@ -3,10 +3,10 @@
         <h3>发表评论</h3>
         <hr>
         {{name}}----------我是路由传递进来的参数
-        <textarea placeholder="请输入要评论的内容（最多吐槽120字）" maxlength="120">
+        <textarea placeholder="请输入要评论的内容（最多吐槽120字）" maxlength="120" v-model="mess">
 
         </textarea>
-         <mt-button type="primary" size="large">发表评论</mt-button>
+         <mt-button type="primary" size="large" @click="add">发表评论</mt-button>
         <div class="cmt">
 
 
@@ -34,7 +34,8 @@ export default {
     data(){
         return{
             name:this.id, //这个是接受通过组件传值的参数 当然也可以使用id
-            list:[]
+            list:[],
+            mess:''
 
         }
     },
@@ -57,6 +58,21 @@ export default {
             let arr=[];
             arr.push(...this.list);
             this.list.push(...arr)
+        },
+        add(){
+            let a=this.mess.trim()
+            if(a == ''){
+                 this.$message({
+                 message: '内容不能为空',
+                 type: 'success',
+                 duration:1000,
+                 showClose:true
+                });
+            }else{
+                let mess={content:a,user:{username:'我是新加的'},ctime:new Date()};
+                this.list.push(mess);
+            }
+            console.log("添加数组成功")
         }
     },
     created(){
