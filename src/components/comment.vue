@@ -2,7 +2,7 @@
     <div>
         <h3>发表评论</h3>
         <hr>
-        {{name}}----------我是路由传递进来的参数
+        {{name}}----------我是组件进来的参数
         <textarea placeholder="请输入要评论的内容（最多吐槽120字）" maxlength="120" v-model="mess">
 
         </textarea>
@@ -43,6 +43,9 @@ export default {
     methods:{
         getComment(){
                let a=this.id;
+               if (a==0){
+                   a=1;
+               }
                 console.log(url[2]+this.id)
             this.$http.get(url[2]+this.id).then((result) => {
                 let arr=result.body.data.normal.list
@@ -65,9 +68,10 @@ export default {
                  this.$message({
                  message: '内容不能为空',
                  type: 'error',
-                 duration:1000,
+                 duration:5000,
                  showClose:true
                 });
+                return;
             }else{
                 let mess={content:a,user:{username:'我是新加的'},ctime:new Date()};
                 this.list.push(mess);

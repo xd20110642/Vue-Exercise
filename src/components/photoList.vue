@@ -1,7 +1,6 @@
 <template>
 	<!-- 滚动组件 -->
 	<Slider></Slider>
-   
     </div>
 </template>
 <script>

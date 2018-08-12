@@ -2,9 +2,14 @@
     <div>
 			<div class="mui-content-padded">
 				<ul>
-				<li v-for="(item,index) in list" :key="index">
+				<router-link :to="{name:'photo',params:{id:index}}" v-for="(item,index) in list" :key="index" tag="li">
 					<img v-lazy="item.url" data-preview-group="1">
-				</li>
+					<div class="text">
+						<div class="info">
+							啦啦啦德玛西亚
+						</div>						
+					</div>
+				</router-link>
 			</ul>
 			</div>
 			
@@ -69,9 +74,24 @@ export default {
 .mui-content-padded{
 	ul li{
 		list-style: none;
+		box-shadow: 0 0 10px #999; 
+		margin: 10px auto;
+		position: relative;
 		img{
 			width: 100%;
 			// height: 50%;
+			// vertical-align: middle;
+		}
+		.text{
+			width: 100%;
+			position: absolute;
+			bottom: 30%;
+			margin: auto;
+			background-color: transparent;
+			.info{
+				color: red;
+				text-align: center;
+			}
 		}
 	}
 }

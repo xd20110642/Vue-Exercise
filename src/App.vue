@@ -207,6 +207,11 @@ export default {
 {
     background: none;
 }
+
+// 提高层级
+.mint-header{
+  z-index: 99;
+}
 </style>
 
 
