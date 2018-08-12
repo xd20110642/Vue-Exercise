@@ -14,7 +14,6 @@
 <script>
 import {Lazyload} from 'mint-ui'
 import url from "../url/url.js"
-import Vue from 'vue';
 export default {
 	data(){
 		return{
@@ -30,12 +29,18 @@ export default {
 		    this.$http.get(url[0]+this.page).then((result) => {
 				let arr=result.data.data;
 					this.list.push(...arr)
+					this.$message({
+                 message: '请求成功',
+                 type: 'success',
+                 duration:1000,
+                 showClose:true,
+             });
                 return this.list
             }).catch((err) => {
                
                this.$message({
                  message: '警告哦，这是一条警告消息',
-                 type: 'erro',
+                 type: 'warn',
                  duration:1000,
                  showClose:true,
              });
@@ -50,11 +55,10 @@ export default {
 	   watch:{//监听id的变化 然后调用函数
 		 index:function(cur,old){ //监听属性 前面是我们data里面定义的变量
 		  console.log("子组件的监听属性被触发"+cur)
-			// return this.index
 			  this.page=cur;
 			  console.log("子组件的监听属性被触发"+this.page)
 			  this.list=[];
-			this.getImg();
+			 this.getImg();
 		   }
 	   },
 

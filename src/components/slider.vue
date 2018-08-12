@@ -13,14 +13,13 @@
 					</div>
 				</div>
 			</div> 
-			<!-- 父组向子组件传值 -->
+			<!-- 父组向子组件传值 动态获取不同的图片-->
 			<photoloading
 			:index="num"
 			></photoloading>
 	</div>	
 </template>
 <script>
-import {Lazyload} from 'mint-ui'
 import mui from "../lib/mui/js/mui.js"
 import photoloading from "./photoloading.vue"
 export default {
@@ -33,7 +32,7 @@ export default {
 		}
 	},
     mounted(){
-		this.$nextTick(() => {
+		this.$nextTick(() => {//在修改数据之后立即使用这个方法，获取更新后的 DOM。
 			mui('.mui-scroll-wrapper').scroll({
 		deceleration: 0.0006, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 		scrollY: true,
