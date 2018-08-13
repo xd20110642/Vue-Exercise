@@ -27,7 +27,7 @@ export default {
                  this.$message({
                  message: '请求成功',
                  type: 'success',
-                 duration:5000,
+                 duration:2000,
                  showClose:true
                 });
                 return this.list
@@ -36,7 +36,7 @@ export default {
                this.$message({
                  message: '警告哦，这是一条警告消息',
                  type: 'warning',
-                 duration:5000,
+                 duration:2000,
                  showClose:true,
              });
                 

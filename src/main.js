@@ -8,10 +8,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 import "./lib/mui/css/mui.css"
 import router from "./router/router.js"
 import  VueResource from "vue-resource" //http请求
+import VuePreview from 'vue-preview' //引入缩略图插件
 Vue.use(ElementUI)
 Vue.use(MintUI) //全局实例化后 不需要再次单独声明
 Vue.use(VueRouter) //全局实例化
 Vue.use(VueResource)//全局实例化
+Vue.use(VuePreview)
 // 全局设置post 提交表单数据格式
 Vue.http.options.emulateJSON=true;
 

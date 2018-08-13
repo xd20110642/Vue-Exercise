@@ -4,6 +4,8 @@
 ##使用了mui样式模板  mui是一个类似于boostrapd的样式模板
 
 ## 移除严格模式 使用babel-plugin-transform-remove-strict-mode  插件  然后再.babelrc配置文件中使用
+
+##vue缩略图插件  npm i vue2-preview -S 文档详情GitHub
 ---------------
 通过这个项目深入的练习的vue和webpack的知识，而且这个项目没有使用vue-cli，创建 而是我手动创建了类似vue-cli的目录结构
 **注意： router ---------------- route  的区别 吃了大苦头**
