@@ -2,7 +2,11 @@
     <div class="aaaaa">
         <el-container class="top">
             <!-- 顶部Head区域 -->
-               <mt-header title="第一个vue项目" fixed></mt-header>
+             <mt-header title="第一个vue项目" fixed>
+                 <router-link to="/" slot="left" v-show="show">
+                 <mt-button icon="back">返回</mt-button>
+                  </router-link>
+              </mt-header>
               
                 <!-- 放置幻灯片组件 -->
             <!-- 路由区域 -->
@@ -13,7 +17,7 @@
             </el-main>
 
             <!-- 底部tabar区域 -->
-            <el-footer>
+            <el-footer style="height:0">
                <nav class="mui-bar mui-bar-tab">
 
                  <router-link to="/home" class="mui-tab-item1">
@@ -53,11 +57,18 @@ import {Header} from 'mint-ui'
 export default {
     data(){
         return{
-
+            show:true
         }
     },
     created(){
-
+      console.log(this.$route.path)
+      let path=this.$route.path;
+      console.log(path == "/home")
+      if(path == "/home"){
+        this.show=false;
+      }else{
+        this.show=true;
+      }
     }
 
 }
@@ -87,6 +98,7 @@ export default {
         left: 0;
         right: 0;
         color: #333;
+        height: 0;
     }
     
   .el-aside {

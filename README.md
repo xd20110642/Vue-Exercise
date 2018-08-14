@@ -23,3 +23,7 @@
 3.对于数组的操作可以在watch里面监听到有变换 那么就清空
 
 4.在router-link 中使用 tag="li"   ========> 将a链接渲染成li标签
+
+5.el-footer 有一个height:60 这个高度影响了 在商品列表里面的按钮点击
+
+6.半场动画 只能使用js钩子函数   在enter钩子函数中 必须使用 el.offsetWdith 否则没有动画效果

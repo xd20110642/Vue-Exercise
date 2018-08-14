@@ -9,6 +9,9 @@ import photolist from "../components/photoList.vue"
 import photoDeatails from "../components/photoDetails.vue"
 import goodslist from "../components/goodslist.vue"
 import goodsInfo from "../components/goodsInfo.vue"
+import goodsDesc from "../components/goodsDesc.vue"
+import goodsComment from "../components/goodsComment.vue"
+
 const router=new VueRouter({
     routes:[
         {path:'/',redirect:'/home',},
@@ -21,7 +24,9 @@ const router=new VueRouter({
         {path:'/home/photolist',component:photolist},
         {path:'/home/photoDeatails/:id',component:photoDeatails,name:'photo'},
         {path:'/home/goodslist',component:goodslist},
-        {path:'/home/goodsInfo/:id',component:goodsInfo,name:'goods'}
+        {path:'/home/goodsInfo/:id',component:goodsInfo,name:'goods'},
+        {path:'/home/goodsDesc/:id',component:goodsDesc,name:'goodsDesc'},
+        {path:'/home/goodsComment:id',component:goodsComment,name:'goodsComment'}
     ],
     linkActiveClass:"mui-active" //设置激活时的路由样式
 })
