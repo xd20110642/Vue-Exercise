@@ -7,7 +7,7 @@
          @after-enter="afterEnter" 
         >
              动画小球
-              <div class="ball" v-show="showa"> </div>
+              <div class="ball" v-show="showa" ref="ball"> </div>
         </transition>
        
 
@@ -31,12 +31,12 @@
                             市场价：￥<del>{{list[0].market_price}}</del> &nbsp;&nbsp;销售价:<span class="now_price">￥{{list[0].sell_price}}</span>
                         <p>购买数量:
                             <!-- 组件传值   父组件向子组件传值 子组件向父组传递-->
-                          <goods-num></goods-num>
+                          <goods-num
+                          @getNum="getSelectCount"
+                          :max="list[0].stock_quantity"
+                          ></goods-num>
                         </p>
                         <p>
-
-                
-
                             <mt-button type="primary" size="small">立即购买</mt-button>
                              <mt-button type="danger" size="small" @click="add">加入购物车</mt-button>
                         </p>
@@ -88,6 +88,7 @@ export default {
                 }
             ],
             showa:false,//控制小球
+            selectedCount:1,//保存用户选中的数量
         }
     },
     components:{
@@ -105,17 +106,31 @@ export default {
           this.showa=!this.showa;
         },
         beforeEnter(el){//动画的初始化构造函数  官方文档操作  el就是我们要操作的dom 实例 支持全部的dom操作
-           el.style.transform="translate(0,0)" //恢复到初始位置  也就是我们定义的位置
+          el.style.transform = "translate(0,0)"; //恢复到初始位置  也就是我们定义的位置
         },
         enter(el,done){//动画进入函数   动画效果没有生效 修改小球的位置 
-            el.offsetWidth;//必须要加入这个 不然没有动画效果
-            el.style.transform="translate(94%,10%)";//结束动画
-            el.style.transtion='all 5s'
-
-            done() //afterEnter的调用
+            el.offsetWidth;
+        let ballPosition=this.$refs.ball.getBoundingClientRect();//获取小球
+       let bade=document.querySelector('#bage').getBoundingClientRect();//获取徽标
+        let xDist=ballPosition.left-bade.left;
+        let yDist=ballPosition.top-bade.top;
+        console.log(xDist);
+        console.log(yDist);
+        el.style.transform="translate(${xDist}px,${yDist}px)"
+        el.style.transition="all 1s cubic-bezier(.17,.67,.83,.67)"
+           done() //afterEnter的调用
+      // 3. 因此，我们经过分析，得到结论： 不能把 位置的 横纵坐标 直接写死了，而是应该 根据不同情况，动态计算这个坐标值；
+      // 4. 经过分析，得出解题思路： 先得到 徽标的 横纵 坐标，再得到 小球的 横纵坐标，然后 让 y 值 求差， x 值也求 差，得到 的结果，就是横纵坐标要位移的距离
+      // 5. 如何 获取 徽标和小球的 位置？？？   domObject.getBoundingClientRect()
         },
         afterEnter(el){
-            // this.showa=!this.showa;
+            this.showa=!this.showa;
+        },
+        getSelectCount(count){
+            // 子组件把 选中的数量传递给父组件
+            this.selectedCount=count;
+            // console.log(document.querySelector('#bage').value())
+            
         }    
         }
 }
@@ -151,8 +166,8 @@ export default {
            position: absolute;
            background-color: red;
            border-radius: 50%;
-           top: 350px;
-           left: 155px;
+           top: 54%;
+           left: 40%;
            z-index: 100;
        }  
     }
