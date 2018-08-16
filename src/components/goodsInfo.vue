@@ -104,6 +104,12 @@ export default {
         },
         add(){//添加到购物车  显示小球动画
           this.showa=!this.showa;
+        //   拼接出一个保存到strore中car数组里的 商品信息对象
+          let goodsInfo={id:this.list[0].id,count:this.selectedCount,price:this.list[0].sell_price,selected:true}
+        //   console.log(goodsInfo)
+        //   保存到vuex中
+        this.$store.commit('add',goodsInfo)
+        console.log(this.$store.state.car)
         },
         beforeEnter(el){//动画的初始化构造函数  官方文档操作  el就是我们要操作的dom 实例 支持全部的dom操作
           el.style.transform = "translate(0,0)"; //恢复到初始位置  也就是我们定义的位置

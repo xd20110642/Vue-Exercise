@@ -9,6 +9,9 @@ import "./lib/mui/css/mui.css"
 import router from "./router/router.js"
 import  VueResource from "vue-resource" //http请求
 import VuePreview from 'vue-preview' //引入缩略图插件
+import store from './state/strote.js'
+import Vuex from 'vuex'
+Vue.use(Vuex)
 Vue.use(ElementUI)
 Vue.use(MintUI) //全局实例化后 不需要再次单独声明
 Vue.use(VueRouter) //全局实例化
@@ -22,8 +25,10 @@ Vue.http.options.emulateJSON=true;
 
 var vue=new Vue({
     el:'#app',
+    store,
     render:c => c(App),
     router
+   
 })
 
 

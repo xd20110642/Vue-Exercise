@@ -3,9 +3,9 @@
         <el-container class="top">
             <!-- 顶部Head区域 -->
              <mt-header title="第一个vue项目" fixed>
-                 <router-link to="/" slot="left" v-show="show">
+                 <span slot="left" @click="goBlack" v-show="flag">
                  <mt-button icon="back">返回</mt-button>
-                  </router-link>
+                 </span>
               </mt-header>
               
                 <!-- 放置幻灯片组件 -->
@@ -31,7 +31,7 @@
                 </router-link> 
                 
                 <router-link to="/shopcar" class="mui-tab-item1">
-                         <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="bage">0</span></span>
+                         <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="bage">{{$store.getters.num}}</span></span>
                          <span class="mui-tab-label">购物车</span>
                 </router-link>
                
@@ -43,7 +43,7 @@
 	        	    </nav>
 
             </el-footer>
-
+ 
         </el-container>
     </div>
 </template>
@@ -57,20 +57,27 @@ import {Header} from 'mint-ui'
 export default {
     data(){
         return{
-            show:true
+            flag:false
         }
     },
-    created(){
-      console.log(this.$route.path)
-      let path=this.$route.path;
-      console.log(path == "/home")
-      if(path == "/home"){
-        this.show=false;
-      }else{
-        this.show=true;
-      }
-    }
-
+   methods:{
+     goBlack(){//点击返回
+      this.$router.go(-1)
+     }
+   },
+   created(){
+    this.flag=this.$route.path==='/home'? false:true;
+   }
+   ,
+   watch:{
+     '$route.path'(newVal,old){
+       if(newVal==='/home'){
+          this.flag=false;
+       }else{
+         this.flag=true;
+       }
+     }
+   }
 }
 </script>
 
